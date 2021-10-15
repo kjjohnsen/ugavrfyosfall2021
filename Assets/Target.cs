@@ -31,5 +31,11 @@ public class Target : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        OVRGrabbable grabbable = collision.rigidbody?.GetComponent<OVRGrabbable>();
+        if(grabbable != null)
+        {
+            GameObject.Destroy(grabbable.gameObject);
+        }
     }
 }
