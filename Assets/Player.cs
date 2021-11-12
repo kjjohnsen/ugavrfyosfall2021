@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public OVRInput.Controller leftHand;
-    public OVRInput.Controller rightHand;
+    public Transform leftHand;
+    public Transform rightHand;
+    public OVRInput.Controller leftController;
+    public OVRInput.Controller rightController;
     public Transform head; //attached in the inspector
     public Transform body; //attached in the inspector
    
@@ -19,7 +21,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 leftJoystick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, leftHand); //left joystick goes from -1 to 1 in x and y
+        Vector2 leftJoystick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, leftController); //left joystick goes from -1 to 1 in x and y
         Vector3 headDirection = head.forward;  //gives us the look direction
         Rigidbody rb = GetComponent<Rigidbody>(); //gets the rigidbody attached to the same gameobject as this script
 
@@ -30,11 +32,40 @@ public class Player : MonoBehaviour
         rb.velocity = bodyVelocity;
         //rb.velocity = headDirection * leftJoystick.y;
         //transform.Translate(headDirection*leftJoystick.y*Time.deltaTime); //moves by 1 unit per second in the forward direction
-        
+
         Vector3 bodyToHead = head.transform.position - body.transform.position;
         float headHeight = bodyToHead.magnitude;
-        body.transform.position = head.transform.position-Vector3.up*headHeight;
+        body.transform.position = head.transform.position - Vector3.up * headHeight;
         body.transform.localScale = new Vector3(1, headHeight / 2.0f, 1);
 
+        OVRGrabber[] grabbers = GetComponentsInChildren<OVRGrabber>();
+
+        Bow leftBow = grabbers[0].grabbedObject?.GetComponent<Bow>();
+        Bow rightBow = grabbers[1].grabbedObject?.GetComponent<Bow>();
+
+        if (leftBow != null)
+        {
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, rightController))
+            {
+                leftBow.updateArrow(rightHand);
+            }
+            else
+            {
+                leftBow.shootArrow(rightHand);
+            }
+        }
+        else if (rightBow != null)
+        {
+            if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, leftController))
+            {
+                rightBow.updateArrow(leftHand);
+            }
+            else
+            {
+                rightBow.shootArrow(leftHand);
+            }
+        }
     }
+
+    
 }

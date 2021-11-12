@@ -115,6 +115,7 @@ public class OVRGrabbable : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
         previousLayer = this.gameObject.layer;
         this.gameObject.layer = LayerMask.NameToLayer("Player");
+        
     }
 
 	/// <summary>
