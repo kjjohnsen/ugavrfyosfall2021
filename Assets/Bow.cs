@@ -7,6 +7,7 @@ public class Bow : MonoBehaviour
     OVRGrabbable grabbable;
     public GameObject arrow;
     public GameObject arrowPrefab;
+    public float flightSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +43,8 @@ public class Bow : MonoBehaviour
     }
     public void shootArrow(Transform hand)
     {
-        arrow.GetComponent<Rigidbody>().velocity = (hand.transform.position - this.transform.position);
+        arrow.GetComponent<Rigidbody>().velocity = arrow.transform.forward * flightSpeed * (this.transform.position - hand.transform.position).magnitude;
+        arrow.GetComponent<Arrow>().inFlight = true;
         arrow = null;
        
     }

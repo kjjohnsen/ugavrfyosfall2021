@@ -23,7 +23,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7575117623203655841}
   - component: {fileID: -3353683414729701705}
-  m_Layer: 0
+  - component: {fileID: 6714754445894046329}
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +62,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6714754445894046329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431953210833574814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c02930785d73e4fa4d5d9a7fe09dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inFlight: 0
 --- !u!1001 &1232559639932578275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,6 +85,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4433e5ebfa0287c4bb1e3ae2a0be0f7e, type: 3}
       propertyPath: m_Name
       value: Arrow00_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4433e5ebfa0287c4bb1e3ae2a0be0f7e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4433e5ebfa0287c4bb1e3ae2a0be0f7e, type: 3}
       propertyPath: m_RootOrder

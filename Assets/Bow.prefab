@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 166292534450642347}
   - component: {fileID: 8621369890096987966}
   - component: {fileID: 8621369890096987967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: de4223c7a5960064a979a1d5f1324a9c, type: 3}
       propertyPath: m_Name
       value: Bow00_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: de4223c7a5960064a979a1d5f1324a9c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: de4223c7a5960064a979a1d5f1324a9c, type: 3}
       propertyPath: m_RootOrder
